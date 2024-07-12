@@ -16,7 +16,7 @@ In this project I will develop a chatbot to generate SQL answers, combined with 
     ```
 2. Navigate to the project directory:
     ```bash
-    cd chatbot_routing
+    cd finetuning_lamini
     ```
 3. Install dependencies:
     ```bash
