@@ -39,4 +39,3 @@ In this project I will develop a chatbot to generate SQL answers, combined with 
 
 ## License
 This project is licensed under the Apache License. See the [LICENSE](LICENSE) file for details.
-**
