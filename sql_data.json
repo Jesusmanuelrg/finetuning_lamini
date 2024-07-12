@@ -1,0 +1,259 @@
+[
+    {"input": "How do I select all columns from a table named 'employees'?",
+     "output": "SELECT * FROM employees;"},
+
+    {"input": "How can I retrieve the names of all employees from the 'employees' table?",
+     "output": "SELECT name FROM employees;"},
+
+    {"input": "What is the SQL query to get the total number of records in the 'sales' table?",
+     "output": "SELECT COUNT(*) FROM sales;"},
+
+    {"input": "How can I find the maximum salary from the 'salaries' table?",
+     "output": "SELECT MAX(salary) FROM salaries;"},
+
+    {"input": "What query would I use to get the average age of employees in the 'employees' table?",
+     "output": "SELECT AVG(age) FROM employees;"},
+
+    {"input": "How do I insert a new record into the 'departments' table?",
+     "output": "INSERT INTO departments (department_id, department_name) VALUES (1, 'HR');"},
+
+    {"input": "What is the query to delete a record from the 'employees' table where the employee_id is 10?",
+     "output": "DELETE FROM employees WHERE employee_id = 10;"},
+
+    {"input": "How can I update the salary of an employee in the 'salaries' table?",
+     "output": "UPDATE salaries SET salary = 70000 WHERE employee_id = 5;"},
+
+    {"input": "What SQL query would I use to join the 'employees' and 'departments' tables?",
+     "output": "SELECT e.name, d.department_name FROM employees e INNER JOIN departments d ON e.department_id = d.department_id;"},
+
+    {"input": "How do I create a new table named 'projects'?",
+     "output": "CREATE TABLE projects (project_id INT PRIMARY KEY, project_name VARCHAR(100));"},
+
+    {"input": "What is the query to drop the 'temporary_data' table?",
+     "output": "DROP TABLE temporary_data;"},
+
+    {"input": "How can I add a new column 'email' to the 'employees' table?",
+     "output": "ALTER TABLE employees ADD COLUMN email VARCHAR(100);"},
+
+    {"input": "What is the query to find all employees whose name starts with 'A'?",
+     "output": "SELECT * FROM employees WHERE name LIKE 'A%';"},
+
+    {"input": "How can I retrieve the top 5 highest salaries from the 'salaries' table?",
+     "output": "SELECT * FROM salaries ORDER BY salary DESC LIMIT 5;"},
+
+    {"input": "What is the SQL query to create an index on the 'employee_id' column in the 'employees' table?",
+     "output": "CREATE INDEX idx_employee_id ON employees (employee_id);"},
+
+    {"input": "How do I remove duplicate rows from the 'sales' table?",
+     "output": "DELETE FROM sales WHERE rowid NOT IN (SELECT MIN(rowid) FROM sales GROUP BY sale_id);"},
+
+    {"input": "What is the SQL query to get the sum of all sales amounts in the 'sales' table?",
+     "output": "SELECT SUM(amount) FROM sales;"},
+
+    {"input": "How can I group employees by department and count the number of employees in each department?",
+     "output": "SELECT department_id, COUNT(*) FROM employees GROUP BY department_id;"},
+
+    {"input": "What query would I use to find employees who have not made any sales?",
+     "output": "SELECT e.name FROM employees e LEFT JOIN sales s ON e.employee_id = s.employee_id WHERE s.employee_id IS NULL;"},
+
+    {"input": "How can I retrieve the names of employees along with their department names?",
+     "output": "SELECT e.name, d.department_name FROM employees e JOIN departments d ON e.department_id = d.department_id;"},
+
+    {"input": "What SQL query would I use to find the second highest salary from the 'salaries' table?",
+     "output": "SELECT MAX(salary) FROM salaries WHERE salary < (SELECT MAX(salary) FROM salaries);"},
+
+    {"input": "How do I retrieve all employees who were hired in the last year?",
+     "output": "SELECT * FROM employees WHERE hire_date > DATE_SUB(NOW(), INTERVAL 1 YEAR);"},
+
+    {"input": "What is the query to find all departments with more than 10 employees?",
+     "output": "SELECT department_id, COUNT(*) FROM employees GROUP BY department_id HAVING COUNT(*) > 10;"},
+
+    {"input": "How can I update multiple columns in the 'employees' table?",
+     "output": "UPDATE employees SET name = 'John Doe', age = 30 WHERE employee_id = 1;"},
+
+    {"input": "What query would I use to find the names of employees and their managers?",
+     "output": "SELECT e.name AS employee_name, m.name AS manager_name FROM employees e LEFT JOIN employees m ON e.manager_id = m.employee_id;"},
+
+    {"input": "How can I create a new table 'attendance' with columns 'employee_id' and 'attendance_date'?",
+     "output": "CREATE TABLE attendance (employee_id INT, attendance_date DATE);"},
+
+    {"input": "What is the SQL query to add a foreign key to the 'attendance' table referencing 'employee_id' in 'employees' table?",
+     "output": "ALTER TABLE attendance ADD CONSTRAINT fk_employee FOREIGN KEY (employee_id) REFERENCES employees(employee_id);"},
+
+    {"input": "How do I select only distinct department names from the 'departments' table?",
+     "output": "SELECT DISTINCT department_name FROM departments;"},
+
+    {"input": "What is the query to find all employees whose age is between 25 and 30?",
+     "output": "SELECT * FROM employees WHERE age BETWEEN 25 AND 30;"},
+
+    {"input": "How can I create a view that shows employee names and their corresponding department names?",
+     "output": "CREATE VIEW employee_departments AS SELECT e.name, d.department_name FROM employees e JOIN departments d ON e.department_id = d.department_id;"},
+
+    {"input": "What SQL query would I use to drop a column 'phone_number' from the 'employees' table?",
+     "output": "ALTER TABLE employees DROP COLUMN phone_number;"},
+
+    {"input": "How do I rename a table from 'old_table' to 'new_table'?",
+     "output": "ALTER TABLE old_table RENAME TO new_table;"},
+
+    {"input": "What is the query to find the total salary paid to employees in each department?",
+     "output": "SELECT department_id, SUM(salary) FROM salaries GROUP BY department_id;"},
+
+    {"input": "How can I create a stored procedure to add a new employee?",
+     "output": "CREATE PROCEDURE AddEmployee (IN name VARCHAR(100), IN age INT, IN department_id INT) BEGIN INSERT INTO employees (name, age, department_id) VALUES (name, age, department_id); END;"},
+
+    {"input": "What is the SQL query to find all employees who have a salary greater than the average salary?",
+     "output": "SELECT * FROM employees WHERE salary > (SELECT AVG(salary) FROM salaries);"},
+
+    {"input": "How do I retrieve the names and hire dates of the most recently hired employees?",
+     "output": "SELECT name, hire_date FROM employees ORDER BY hire_date DESC;"},
+
+    {"input": "What query would I use to get the count of employees in each department, including departments with no employees?",
+     "output": "SELECT d.department_name, COUNT(e.employee_id) FROM departments d LEFT JOIN employees e ON d.department_id = e.department_id GROUP BY d.department_name;"},
+
+    {"input": "How can I create a trigger that logs changes to the 'salaries' table?",
+     "output": "CREATE TRIGGER log_salary_changes AFTER UPDATE ON salaries FOR EACH ROW BEGIN INSERT INTO salary_changes_log (employee_id, old_salary, new_salary, change_date) VALUES (OLD.employee_id, OLD.salary, NEW.salary, NOW()); END;"},
+
+    {"input": "What is the query to find employees who have not attended any training sessions?",
+     "output": "SELECT e.name FROM employees e LEFT JOIN attendance a ON e.employee_id = a.employee_id WHERE a.employee_id IS NULL;"},
+
+    {"input": "How do I update the department of employees whose current department is 'Sales' to 'Marketing'?",
+     "output": "UPDATE employees SET department_id = (SELECT department_id FROM departments WHERE department_name = 'Marketing') WHERE department_id = (SELECT department_id FROM departments WHERE department_name = 'Sales');"},
+
+    {"input": "What SQL query would I use to find the employees who have the highest salary in each department?",
+     "output": "SELECT e.name, e.department_id, s.salary FROM employees e JOIN salaries s ON e.employee_id = s.employee_id WHERE s.salary = (SELECT MAX(salary) FROM salaries WHERE department_id = e.department_id);"},
+
+    {"input": "How can I retrieve the list of projects along with the names of employees working on them?",
+     "output": "SELECT p.project_name, e.name FROM projects p JOIN project_assignments pa ON p.project_id = pa.project_id JOIN employees e ON pa.employee_id = e.employee_id;"},
+
+    {"input": "What is the query to find the average salary in each department?",
+     "output": "SELECT department_id, AVG(salary) FROM salaries GROUP BY department_id;"},
+
+    {"input": "How do I create a table 'performance' with columns 'employee_id', 'review_date', and 'score'?",
+     "output": "CREATE TABLE performance (employee_id INT, review_date DATE, score INT);"},
+
+    {"input": "What SQL query would I use to add a unique constraint to the 'email' column in the 'employees' table?",
+     "output": "ALTER TABLE employees ADD CONSTRAINT unique_email UNIQUE (email);"},
+
+    {"input": "How can I find employees who have worked on more than 3 projects?",
+     "output": "SELECT employee_id, COUNT(*) FROM project_assignments GROUP BY employee_id HAVING COUNT(*) > 3;"},
+
+    {"input": "What is the query to get the details of employees along with their performance scores?",
+     "output": "SELECT e.name, p.score FROM employees e JOIN performance p ON e.employee_id = p.employee_id;"},
+
+    {"input": "How do I create a composite primary key on the 'attendance' table?",
+     "output": "ALTER TABLE attendance ADD CONSTRAINT pk_attendance PRIMARY KEY (employee_id, attendance_date);"},
+
+    {"input": "What SQL query would I use to find the names of employees who have the same salary?",
+     "output": "SELECT e1.name, e2.name FROM employees e1 JOIN employees e2 ON e1.salary = e2.salary AND e1.employee_id <> e2.employee_id;"},
+
+    {"input": "How can I retrieve the names of employees who joined in the month of January?",
+     "output": "SELECT name FROM employees WHERE MONTH(hire_date) = 1;"},
+
+    {"input": "What is the query to find the difference in days between 'start_date' and 'end_date' in the 'projects' table?",
+     "output": "SELECT DATEDIFF(end_date, start_date) AS project_duration FROM projects;"},
+
+    {"input": "How do I create a table 'training' with columns 'training_id', 'training_name', and 'training_date'?",
+     "output": "CREATE TABLE training (training_id INT PRIMARY KEY, training_name VARCHAR(100), training_date DATE);"},
+
+    {"input": "What SQL query would I use to add a foreign key to the 'training' table referencing 'employee_id' in 'employees' table?",
+     "output": "ALTER TABLE training ADD CONSTRAINT fk_employee FOREIGN KEY (employee_id) REFERENCES employees(employee_id);"},
+
+    {"input": "How can I find the average score of employees in their performance reviews?",
+     "output": "SELECT AVG(score) FROM performance;"},
+
+    {"input": "What is the query to get the list of employees who have received the highest score in performance reviews?",
+     "output": "SELECT e.name FROM employees e JOIN performance p ON e.employee_id = p.employee_id WHERE p.score = (SELECT MAX(score) FROM performance);"},
+
+    {"input": "How do I create a table 'benefits' with columns 'benefit_id', 'employee_id', and 'benefit_type'?",
+     "output": "CREATE TABLE benefits (benefit_id INT PRIMARY KEY, employee_id INT, benefit_type VARCHAR(100));"},
+
+    {"input": "What SQL query would I use to find the total number of distinct benefit types?",
+     "output": "SELECT COUNT(DISTINCT benefit_type) FROM benefits;"},
+
+    {"input": "How can I find the employees who have received more than one type of benefit?",
+     "output": "SELECT employee_id, COUNT(DISTINCT benefit_type) FROM benefits GROUP BY employee_id HAVING COUNT(DISTINCT benefit_type) > 1;"},
+
+    {"input": "What is the query to get the names of employees who have attended all training sessions?",
+     "output": "SELECT e.name FROM employees e WHERE NOT EXISTS (SELECT t.training_id FROM training t WHERE NOT EXISTS (SELECT a.employee_id FROM attendance a WHERE a.employee_id = e.employee_id AND a.training_id = t.training_id));"},
+
+    {"input": "How do I create a table 'projects_employees' with columns 'project_id' and 'employee_id'?",
+     "output": "CREATE TABLE projects_employees (project_id INT, employee_id INT);"},
+
+    {"input": "What SQL query would I use to find the employees who have worked on the 'Alpha' project?",
+     "output": "SELECT e.name FROM employees e JOIN projects_employees pe ON e.employee_id = pe.employee_id JOIN projects p ON pe.project_id = p.project_id WHERE p.project_name = 'Alpha';"},
+
+    {"input": "How can I retrieve the names of employees who have both attended training sessions and received benefits?",
+     "output": "SELECT e.name FROM employees e WHERE EXISTS (SELECT a.employee_id FROM attendance a WHERE a.employee_id = e.employee_id) AND EXISTS (SELECT b.employee_id FROM benefits b WHERE b.employee_id = e.employee_id);"},
+
+    {"input": "What is the query to find the count of employees who have received each type of benefit?",
+     "output": "SELECT benefit_type, COUNT(employee_id) FROM benefits GROUP BY benefit_type;"},
+
+    {"input": "How do I create a view that shows the total salary by department?",
+     "output": "CREATE VIEW total_salary_by_department AS SELECT department_id, SUM(salary) AS total_salary FROM salaries GROUP BY department_id;"},
+
+    {"input": "What SQL query would I use to find the names of employees who have not been assigned to any project?",
+     "output": "SELECT e.name FROM employees e LEFT JOIN projects_employees pe ON e.employee_id = pe.employee_id WHERE pe.project_id IS NULL;"},
+
+    {"input": "How can I retrieve the names and scores of employees who scored above average in their performance reviews?",
+     "output": "SELECT e.name, p.score FROM employees e JOIN performance p ON e.employee_id = p.employee_id WHERE p.score > (SELECT AVG(score) FROM performance);"},
+
+    {"input": "What is the query to find the departments with the highest average salary?",
+     "output": "SELECT department_id, AVG(salary) AS avg_salary FROM salaries GROUP BY department_id ORDER BY avg_salary DESC LIMIT 1;"},
+
+    {"input": "How do I create a table 'department_managers' with columns 'department_id' and 'manager_id'?",
+     "output": "CREATE TABLE department_managers (department_id INT, manager_id INT);"},
+
+    {"input": "What SQL query would I use to find the names of managers for each department?",
+     "output": "SELECT d.department_name, e.name AS manager_name FROM departments d JOIN department_managers dm ON d.department_id = dm.department_id JOIN employees e ON dm.manager_id = e.employee_id;"},
+
+    {"input": "How can I find the total number of training sessions attended by each employee?",
+     "output": "SELECT employee_id, COUNT(training_id) FROM attendance GROUP BY employee_id;"},
+
+    {"input": "What is the query to get the list of employees who have not received any benefits?",
+     "output": "SELECT e.name FROM employees e LEFT JOIN benefits b ON e.employee_id = b.employee_id WHERE b.employee_id IS NULL;"},
+
+    {"input": "How do I create a stored procedure to update an employee's performance score?",
+     "output": "CREATE PROCEDURE UpdatePerformanceScore (IN employee_id INT, IN new_score INT) BEGIN UPDATE performance SET score = new_score WHERE employee_id = employee_id; END;"},
+
+    {"input": "What SQL query would I use to find the average duration of projects?",
+     "output": "SELECT AVG(DATEDIFF(end_date, start_date)) AS average_duration FROM projects;"},
+
+    {"input": "How can I retrieve the names of employees along with the count of projects they have worked on?",
+     "output": "SELECT e.name, COUNT(pe.project_id) AS project_count FROM employees e JOIN projects_employees pe ON e.employee_id = pe.employee_id GROUP BY e.name;"},
+
+    {"input": "What is the query to get the list of departments with more than 5 managers?",
+     "output": "SELECT department_id, COUNT(manager_id) AS manager_count FROM department_managers GROUP BY department_id HAVING COUNT(manager_id) > 5;"},
+
+    {"input": "How do I create a trigger that updates the total number of employees in each department after an insert?",
+     "output": "CREATE TRIGGER update_employee_count AFTER INSERT ON employees FOR EACH ROW BEGIN UPDATE departments SET employee_count = employee_count + 1 WHERE department_id = NEW.department_id; END;"},
+
+    {"input": "What SQL query would I use to find the names of employees who have never scored below 60 in their performance reviews?",
+     "output": "SELECT e.name FROM employees e JOIN performance p ON e.employee_id = p.employee_id GROUP BY e.name HAVING MIN(p.score) >= 60;"},
+
+    {"input": "How can I find the names of employees who have the same manager?",
+     "output": "SELECT e1.name AS employee1, e2.name AS employee2 FROM employees e1 JOIN employees e2 ON e1.manager_id = e2.manager_id AND e1.employee_id <> e2.employee_id;"},
+
+    {"input": "What is the query to get the total amount of benefits received by each employee?",
+     "output": "SELECT employee_id, COUNT(benefit_type) AS total_benefits FROM benefits GROUP BY employee_id;"},
+
+    {"input": "How do I create a table 'employee_skills' with columns 'employee_id' and 'skill'?",
+     "output": "CREATE TABLE employee_skills (employee_id INT, skill VARCHAR(100));"},
+
+    {"input": "What SQL query would I use to find the skills of each employee?",
+     "output": "SELECT e.name, es.skill FROM employees e JOIN employee_skills es ON e.employee_id = es.employee_id;"},
+
+    {"input": "How can I find the names of employees who have more than 5 skills?",
+     "output": "SELECT e.name FROM employees e JOIN employee_skills es ON e.employee_id = es.employee_id GROUP BY e.name HAVING COUNT(es.skill) > 5;"},
+
+    {"input": "What is the query to get the average number of skills per employee?",
+     "output": "SELECT AVG(skill_count) FROM (SELECT COUNT(skill) AS skill_count FROM employee_skills GROUP BY employee_id) AS skill_counts;"},
+
+    {"input": "How do I create a view that shows the names of employees along with their skills?",
+     "output": "CREATE VIEW employee_skills_view AS SELECT e.name, es.skill FROM employees e JOIN employee_skills es ON e.employee_id = es.employee_id;"},
+
+    {"input": "What SQL query would I use to find employees who have attended training but do not have any skills listed?",
+     "output": "SELECT e.name FROM employees e WHERE EXISTS (SELECT a.employee_id FROM attendance a WHERE a.employee_id = e.employee_id) AND NOT EXISTS (SELECT es.employee_id FROM employee_skills es WHERE es.employee_id = e.employee_id);"},
+
+    {"input": "How can I retrieve the names of employees who have worked on the most projects?",
+     "output": "SELECT e.name FROM employees e JOIN projects_employees pe ON e.employee_id = pe.employee_id GROUP BY e.name ORDER BY COUNT(pe.project_id) DESC LIMIT 1;"}
+]
